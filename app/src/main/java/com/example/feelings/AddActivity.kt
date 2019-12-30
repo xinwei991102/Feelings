@@ -2,6 +2,7 @@ package com.example.feelings
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -17,27 +18,35 @@ class AddActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add)
 
         buttonSave.setOnClickListener{
-            saveUser()
+            saveFeeling()
         }
 
         imageViewHappyMood.setOnClickListener{
             mood = 3
-            //it.background = #CCCCCC
+            imageViewHappyMood.setBackgroundColor(Color.rgb(192,192,192))
+            imageViewBadMood.setBackgroundColor(Color.rgb(255,255,255))
+            imageViewNeutral.setBackgroundColor(Color.rgb(255,255,255))
         }
 
         imageViewBadMood.setOnClickListener{
             mood = 1
+            imageViewBadMood.setBackgroundColor(Color.rgb(192,192,192))
+            imageViewHappyMood.setBackgroundColor(Color.rgb(255,255,255))
+            imageViewNeutral.setBackgroundColor(Color.rgb(255,255,255))
         }
 
         imageViewNeutral.setOnClickListener{
             mood = 2
+            imageViewNeutral.setBackgroundColor(Color.rgb(192,192,192))
+            imageViewBadMood.setBackgroundColor(Color.rgb(255,255,255))
+            imageViewHappyMood.setBackgroundColor(Color.rgb(255,255,255))
         }
 
     }
 
-    private fun saveUser(){
+    private fun saveFeeling(){
         if(TextUtils.isEmpty(editTextRemark.text)){
-            editTextRemark.setError("Must enter the value...")
+            editTextRemark.error = "Must enter the value..."
         }
 
         val remark = editTextRemark.text.toString()

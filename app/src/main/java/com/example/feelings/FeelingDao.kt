@@ -14,9 +14,6 @@ interface FeelingDao {
     @Query("SELECT * FROM feeling")
     fun getFeelings() : LiveData<List<Feeling>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(feeling: Feeling)
-
     @Query("DELETE FROM feeling")
     suspend fun deleteAll()
 

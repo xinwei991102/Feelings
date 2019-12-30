@@ -7,6 +7,6 @@ class FeelingRepository (private val feelingDao: FeelingDao){
     val allFeelings : LiveData<List<Feeling>> = feelingDao.getFeelings()
 
     suspend fun insert(feeling:Feeling){
-        feelingDao.insert(feeling)
+        feelingDao.insertFeeling(feeling)
     }
 }
